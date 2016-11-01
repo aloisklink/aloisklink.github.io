@@ -2,6 +2,8 @@
 title: "About Me"
 permalink: /
 excerpt: "About Alois Klink"
+layout: single
+author_profile: true
 modified: 2016-11-01
 ---
 
