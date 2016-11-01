@@ -9,8 +9,6 @@ modified: 2016-11-01
 
 {% include base_path %}
 
-# About Me
-
 I am a third-year Electronic Engineering and Artificial Intelligence student at
 the University of Southampton. I'm mostly interested in programming, especially
 in anything related to Artificial Intelligence, such as Machine Learning or
@@ -51,15 +49,15 @@ an overview of the entire field of Electronics with a focus on Artificial Intell
 
 [elecEng_url]: http://www.ecs.soton.ac.uk/programmes/meng-electronic-engineering-artificial-intelligence
 
-Average Grade: (For Sep 2014-Jun 2016): 69.15
+Average Grade: (For Sep 2014 - Jun 2016): <b> 69.15 </b>
 
 <table border="1">
 	<tr>
-		<td> Digital Systems &amp Signal Processing </td>
+		<td> Digital Systems & Signal Processing </td>
 		<td> 75 </td>
 	</tr>
 	<tr>
-		<td> Control &amp Communications </td>
+		<td> Control & Communications </td>
 		<td> 71 </td>
 	</tr>
 	<tr>
@@ -71,20 +69,24 @@ Average Grade: (For Sep 2014-Jun 2016): 69.15
 		<td> 75 </td>
 	</tr>
 	<tr>
-		<td> Digital Systems &amp Microprocessors </td>
+		<td> Digital Systems & Microprocessors </td>
 		<td> 88 </td>
 	</tr>
 </table>
 
 ## Machine Learning Workshop
+
 ### JP Morgan, London
+
 #### Jun 2016
 
 This JP Morgan Machine Learning Workshop taught machine learning techniques in
 Python. 
 
 # Projects
+
 ## Ball Robot
+
 #### March 2016
 
 I worked on a web-controlled spherical ball robot. I wrote most of the back-end 
@@ -94,7 +96,9 @@ Javascript (and the necessary backend) that allowed accelerometer/GPS data to be
 shown on the website, along with the motor status.
 
 ## Honorable Mention
+
 ### IBM's Master the Mainframe Constest 2016
+
 #### Feb 2016
 
 I received an [honorable mention] [mtmWoF] for Part 3 of IBM's Master the Mainframe
@@ -104,6 +108,7 @@ I was also a [prize winner] [mtmWoF] for Part 2.
 [mtmWoF]: http://mtm2015.mybluemix.net/#tabs-6
 
 ## PID Controlled Voltage Boost Converter
+
 #### May 2015
 
 I created a boost converter controlled by an [ATmega644P] [atmega]. It was programmed
@@ -114,6 +119,7 @@ changing parameters.
 [atmega]: http://www.atmel.com/devices/atmega644p.aspx
 
 ## Password Manager
+
 #### May 2014
 
 I built a password manager in Java. It had a cryptographically secure random
@@ -121,7 +127,9 @@ password generator, and saved the passwords in an encrypted format. The GUI was
 made using Swing. 
 
 # Skills
+
 ## Programming Languages
+
 * C (Embedded Programming)
 * C++ (Qt and RTEMS)
 * MATLAB
@@ -130,6 +138,7 @@ made using Swing.
 * SystemVerilog (Hardware Description Language)
 
 ## Software
+
 * Windows
 * Linux and Bash
 * Git and SVN
