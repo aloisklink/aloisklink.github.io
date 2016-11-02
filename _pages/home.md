@@ -14,13 +14,13 @@ the University of Southampton. I'm mostly interested in programming, especially
 in anything related to Artificial Intelligence, such as Machine Learning or
 Computer Vision.
 
-# Experience
+## Experience
 
-## Engineering Intern
+### Engineering Intern
 
-### Airbus Defence & Space Friedrichshafen
+#### Airbus Defence & Space Friedrichshafen
 
-#### Jun 2016 - Sep 2016
+##### Jun 2016 - Sep 2016
 
 I was working on the on-board software for the "FLP Testbench" project: a
 testbench for a small, affordable, customizable, and state-of-the-art satellite
@@ -35,13 +35,13 @@ interfaces and generic templates. [Doxygen] [dox_url] was used to make documenta
 
 [dox_url]: http://www.stack.nl/~dimitri/doxygen/
 
-# Education
+## Education
 
-## MEng Electronic Engineering with Artificial Intelligence
+### MEng Electronic Engineering with Artificial Intelligence
 
-### The University of Southampton
+#### The University of Southampton
 
-#### Sep 2014 - Jun 2018
+##### Sep 2014 - Jun 2018
 
 The University of Southampton's 
 [MEng Electronic Engineering with Artificial Intelligence] [elecEng_url] gave me
@@ -49,9 +49,13 @@ an overview of the entire field of Electronics with a focus on Artificial Intell
 
 [elecEng_url]: http://www.ecs.soton.ac.uk/programmes/meng-electronic-engineering-artificial-intelligence
 
-Average Grade: (For Sep 2014 - Jun 2016): <b> 69.15 </b>
+Grades:
 
 <table border="1">
+	<tr>
+		<td> <b> Average Grade </b> </td>
+		<td> <b> 69.15 </b> </td>
+	</tr>
 	<tr>
 		<td> Digital Systems & Signal Processing </td>
 		<td> 75 </td>
@@ -74,20 +78,20 @@ Average Grade: (For Sep 2014 - Jun 2016): <b> 69.15 </b>
 	</tr>
 </table>
 
-## Machine Learning Workshop
+### Machine Learning Workshop
 
-### JP Morgan, London
+#### JP Morgan, London
 
-#### Jun 2016
+##### Jun 2016
 
 This JP Morgan Machine Learning Workshop taught machine learning techniques in
 Python. 
 
-# Projects
+## Projects
 
-## Ball Robot
+### Ball Robot
 
-#### March 2016
+##### March 2016
 
 I worked on a web-controlled spherical ball robot. I wrote most of the back-end 
 code that it ran on, allowing Javascript on a website to execute Python code on
@@ -95,11 +99,11 @@ Raspberry Pi in the ball robot, which could then control motors. I also wrote
 Javascript (and the necessary backend) that allowed accelerometer/GPS data to be
 shown on the website, along with the motor status.
 
-## Honorable Mention
+### Honorable Mention
 
-### IBM's Master the Mainframe Constest 2016
+#### IBM's Master the Mainframe Constest 2016
 
-#### Feb 2016
+##### Feb 2016
 
 I received an [honorable mention] [mtmWoF] for Part 3 of IBM's Master the Mainframe
 Contest 2016. It involved heavy use of z/OS and some JCL, Java, COBOL, and SQL.
@@ -107,9 +111,9 @@ I was also a [prize winner] [mtmWoF] for Part 2.
 
 [mtmWoF]: http://mtm2015.mybluemix.net/#tabs-6
 
-## PID Controlled Voltage Boost Converter
+### PID Controlled Voltage Boost Converter
 
-#### May 2015
+##### May 2015
 
 I created a boost converter controlled by an [ATmega644P] [atmega]. It was programmed
 in C and used a PID controller. In addition, the embedded device communicated to
@@ -118,17 +122,17 @@ changing parameters.
 
 [atmega]: http://www.atmel.com/devices/atmega644p.aspx
 
-## Password Manager
+### Password Manager
 
-#### May 2014
+##### May 2014
 
 I built a password manager in Java. It had a cryptographically secure random
 password generator, and saved the passwords in an encrypted format. The GUI was 
 made using Swing. 
 
-# Skills
+## Skills
 
-## Programming Languages
+### Programming Languages
 
 * C (Embedded Programming)
 * C++ (Qt and RTEMS)
@@ -137,7 +141,7 @@ made using Swing.
 * Python
 * SystemVerilog (Hardware Description Language)
 
-## Software
+### Software
 
 * Windows
 * Linux and Bash
