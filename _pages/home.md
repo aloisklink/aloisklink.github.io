@@ -99,9 +99,7 @@ Raspberry Pi in the ball robot, which could then control motors. I also wrote
 Javascript (and the necessary backend) that allowed accelerometer/GPS data to be
 shown on the website, along with the motor status.
 
-### Honorable Mention
-
-#### IBM's Master the Mainframe Constest 2016
+### IBM's Master the Mainframe Constest 2016
 
 ##### Feb 2016
 
