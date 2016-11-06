@@ -70,9 +70,9 @@ social:
 
 # Analytics
 analytics:
-  provider               : "google"
+  provider               : "none" #"google"
   google:
-    tracking_id          : "UA-86878493-1"
+    tracking_id          : #"UA-86878493-1"
 
 
 # Site Author
