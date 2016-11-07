@@ -1,7 +1,7 @@
 ---
 title: "About Me"
 permalink: /
-excerpt: "About Alois Klink"
+excerpt: "Alois Klink is a third-year Electronic Engineering and Artificial Intelligence student at the University of Southampton."
 layout: single
 author_profile: true
 modified: 2016-11-01
