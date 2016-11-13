@@ -4,7 +4,7 @@ permalink: /
 excerpt: "Alois Klink is a third-year Electronic Engineering and Artificial Intelligence student at the University of Southampton."
 layout: single
 author_profile: true
-modified: 2016-11-01
+modified: 2016-11-13
 ---
 
 {% include base_path %}
@@ -89,6 +89,15 @@ Python.
 
 ## Projects
 
+### IBM's Master the Mainframe Contest 2016
+
+##### Nov 2016
+
+I was a [Part 2 Prize Winner] [mtm2016WoF] for IBM's Master the Mainframe Conest 2016.
+In it, I learnt how to perform extensive programming (advanced commands, system setup, and advanced system navigation) and application developing (C, JAVA, COBOL, assembler and REXX) tasks, as well as gaining hands-on experience with multiple operating systems (Linux on z Systems, z/VM, z/OS, z/TPF).
+
+[mtm2016WoF]: http://mtm2016.mybluemix.net/wall_of_fame/wall_of_fame.html
+
 ### Ball Robot
 
 ##### March 2016
@@ -99,12 +108,12 @@ Raspberry Pi in the ball robot, which could then control motors. I also wrote
 Javascript (and the necessary backend) that allowed accelerometer/GPS data to be
 shown on the website, along with the motor status.
 
-### IBM's Master the Mainframe Constest 2016
+### IBM's Master the Mainframe Contest 2015
 
 ##### Feb 2016
 
 I received an [honorable mention] [mtmWoF] for Part 3 of IBM's Master the Mainframe
-Contest 2016. It involved heavy use of z/OS and some JCL, Java, COBOL, and SQL.
+Contest 2015. It involved heavy use of z/OS and some JCL, Java, COBOL, and SQL.
 I was also a [prize winner] [mtmWoF] for Part 2.
 
 [mtmWoF]: http://mtm2015.mybluemix.net/#tabs-6
