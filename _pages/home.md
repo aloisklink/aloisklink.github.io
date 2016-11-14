@@ -4,6 +4,7 @@ permalink: /
 excerpt: "Alois Klink is a third-year Electronic Engineering and Artificial Intelligence student at the University of Southampton."
 layout: single
 author_profile: true
+sitemap: true
 modified: 2016-11-13
 ---
 
