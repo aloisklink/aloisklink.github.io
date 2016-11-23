@@ -16,5 +16,5 @@ The following links are for getting Google Search to re-crawl these pages.
 Both pages are ones I control, but unfortunately I do not own the domain so I
 cannot use Google Webmaster to force a recrawl.
 
-- [users.ecs.soton.ac.uk/ak9g14/test/php/] (http://users.ecs.soton.ac.uk/ak9g14/test/index.html)
-- [users.ecs.soton.ac.uk/ak9g14/test/index.html] (http://users.ecs.soton.ac.uk/ak9g14/test/index.html)
+- [users.ecs.soton.ac.uk/ak9g14/test/php/](http://users.ecs.soton.ac.uk/ak9g14/test/index.html)
+- [users.ecs.soton.ac.uk/ak9g14/test/index.html](http://users.ecs.soton.ac.uk/ak9g14/test/index.html)
