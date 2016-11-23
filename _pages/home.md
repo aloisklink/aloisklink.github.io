@@ -5,7 +5,24 @@ excerpt: "Alois Klink is a third-year Electronic Engineering and Artificial Inte
 layout: single
 author_profile: true
 sitemap: true
-modified: 2016-11-13
+modified: 2016-11-23
+
+grades:
+ - name: Digital Systems & Signal Processing
+   code: ELEC1202
+   grade: 75
+ - name: Control & Communications
+   code: ELEC2220
+   grade: 71
+ - name: Programming
+   code: ELEC1201
+   grade: 91
+ - name: Advanced Programming
+   code: ELEC1204
+   grade: 75
+ - name: Digital Systems & Microprocessors
+   code: ELEC2221
+   grade: 88
 ---
 
 {% include base_path %}
@@ -48,7 +65,15 @@ The University of Southampton's
 [MEng Electronic Engineering with Artificial Intelligence] [elecEng_url] gave me
 an overview of the entire field of Electronics with a focus on Artificial Intelligence.
 
+For my third-year project, I am working on evaluating and assessing 
+Iterative-Learning-Control algorithms with Professor Eric Rogers.
+
+Courses that I am currently doing include [Machine Learning] [machLearn_url]
+and [Computer Vision] [compVis_url].
+
 [elecEng_url]: http://www.ecs.soton.ac.uk/programmes/meng-electronic-engineering-artificial-intelligence
+[machLearn_url]: http://www.ecs.soton.ac.uk/module/COMP3206
+[compVis_url]: http://www.ecs.soton.ac.uk/module/COMP3204
 
 Grades:
 
@@ -57,26 +82,16 @@ Grades:
 		<td> <b> Average Grade </b> </td>
 		<td> <b> 69.15 </b> </td>
 	</tr>
+	{% for course in page.grades %}
 	<tr>
-		<td> Digital Systems & Signal Processing </td>
-		<td> 75 </td>
+		<td> 
+		  <a href="http://www.ecs.soton.ac.uk/module/{{ course.code }}">
+		    {{ course.name }}
+		  </a>
+		</td>
+		<td> {{ course.grade }} </td>
 	</tr>
-	<tr>
-		<td> Control & Communications </td>
-		<td> 71 </td>
-	</tr>
-	<tr>
-		<td> Programming </td>
-		<td> 91 </td>
-	</tr>
-	<tr>
-		<td> Advanced Programming </td>
-		<td> 75 </td>
-	</tr>
-	<tr>
-		<td> Digital Systems & Microprocessors </td>
-		<td> 88 </td>
-	</tr>
+	{% endfor %}
 </table>
 
 ### Machine Learning Workshop
