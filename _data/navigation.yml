@@ -1,5 +1,7 @@
 # main links
 main:
+  - title: "PDF Résumé"
+    url: "/Resume.pdf"
   # - title: "Résumé"
   #   url: /Resume/
 
