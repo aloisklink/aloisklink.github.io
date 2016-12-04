@@ -5,7 +5,7 @@ excerpt: "Alois Klink is a third-year Electronic Engineering and Artificial Inte
 layout: single
 author_profile: true
 sitemap: true
-modified: 2016-11-23
+modified: 2016-12-04
 
 grades:
  - name: Digital Systems & Signal Processing
@@ -108,9 +108,25 @@ Python.
 ### IBM's Master the Mainframe Contest 2016
 
 ##### Nov 2016
-
-I was a [Part 2 Prize Winner] [mtm2016WoF] for IBM's Master the Mainframe Conest 2016.
+<div style="overflow:hidden">
+  <div style="float:right; width:calc(5% + 150px); text-align: right; height: auto">
+    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="5bc08906-b832-44d9-8ee4-897469a3bf53"></div>
+    <script type="text/javascript">
+      (function() {
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = '//cdn.youracclaim.com/assets/utilities/embed.js';
+        var o = document.getElementsByTagName('script')[0];
+        o.parentNode.insertBefore(s, o);
+        })();
+    </script>
+  </div>
+  <div markdown="1" style="float:left; width: calc(95% - 150px); height: auto">
+I was a [Part 2 Prize Winner] [mtm2016WoF] for IBM's Master the Mainframe Contest 2016.
 In it, I learnt how to perform extensive programming (advanced commands, system setup, and advanced system navigation) and application developing (C, JAVA, COBOL, assembler and REXX) tasks, as well as gaining hands-on experience with multiple operating systems (Linux on z Systems, z/VM, z/OS, z/TPF).
+  </div>
+</div>
 
 [mtm2016WoF]: http://mtm2016.mybluemix.net/wall_of_fame/wall_of_fame.html
 
