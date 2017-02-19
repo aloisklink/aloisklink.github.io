@@ -5,9 +5,21 @@ excerpt: "Alois Klink is a third-year Electronic Engineering and Artificial Inte
 layout: single
 author_profile: true
 sitemap: true
-modified: 2016-12-04
+modified: 2017-02-19
 
 grades:
+ - name: Computer Vision
+   code: COMP3204
+   grade: In Progress
+ - name: Machine Learning
+   code: COMP3206
+   grade: In Progress
+ - name: Computational Biology
+   code: COMP3212
+   grade: In Progress
+ - name: Computer Graphics
+   code: COMP3214
+   grade: In Progress
  - name: Digital Systems & Signal Processing
    code: ELEC1202
    grade: 75
@@ -51,6 +63,8 @@ The software was written in C++11 with an object-oriented design. To increase co
 reusability, the code was heavily encapsulated and filled with abstract
 interfaces and generic templates. [Doxygen] [dox_url] was used to make documentation.
 
+*See [the page on Airbus Experience](/experience/airbus) for more information.*
+
 [dox_url]: http://www.stack.nl/~dimitri/doxygen/
 
 ## Education
@@ -68,14 +82,9 @@ an overview of the entire field of Electronics with a focus on Artificial Intell
 For my third-year project, I am working on evaluating and assessing 
 Iterative-Learning-Control algorithms with Professor Eric Rogers.
 
-Courses that I am currently doing include [Machine Learning] [machLearn_url]
-and [Computer Vision] [compVis_url].
-
 [elecEng_url]: http://www.ecs.soton.ac.uk/programmes/meng-electronic-engineering-artificial-intelligence
-[machLearn_url]: http://www.ecs.soton.ac.uk/module/COMP3206
-[compVis_url]: http://www.ecs.soton.ac.uk/module/COMP3204
 
-Grades:
+######Grades:
 
 <table border="1">
 	<tr>
