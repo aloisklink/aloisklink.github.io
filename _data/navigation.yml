@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "PDF Résumé"
-    url: "/Resume.pdf"
+    url: "/cv/ResumeOnePage.pdf"
   # - title: "Résumé"
   #   url: /Resume/
 
