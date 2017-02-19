@@ -84,7 +84,7 @@ Iterative-Learning-Control algorithms with Professor Eric Rogers.
 
 [elecEng_url]: http://www.ecs.soton.ac.uk/programmes/meng-electronic-engineering-artificial-intelligence
 
-######Grades:
+Grades:
 
 <table border="1">
 	<tr>
