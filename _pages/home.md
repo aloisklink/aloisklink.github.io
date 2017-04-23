@@ -5,21 +5,21 @@ excerpt: "Alois Klink is a third-year Electronic Engineering and Artificial Inte
 layout: single
 author_profile: true
 sitemap: true
-modified: 2017-02-19
+modified: 2017-04-23
 
 grades:
- - name: Computer Vision
-   code: COMP3204
-   grade: In Progress
- - name: Machine Learning
-   code: COMP3206
-   grade: In Progress
  - name: Computational Biology
    code: COMP3212
    grade: In Progress
  - name: Computer Graphics
    code: COMP3214
    grade: In Progress
+ - name: Computer Vision
+   code: COMP3204
+   grade: 75
+ - name: Machine Learning
+   code: COMP3206
+   grade: 62
  - name: Digital Systems & Signal Processing
    code: ELEC1202
    grade: 75
