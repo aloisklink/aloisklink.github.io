@@ -5,44 +5,89 @@ excerpt: "Alois Klink is a third-year Electronic Engineering and Artificial Inte
 layout: single
 author_profile: true
 sitemap: true
-modified: 2017-04-23
+modified: 2018-10-17
 
 grades:
+ - name: Advanced Machine Learning
+   code: COMP6208
+   grade: 80
+ - name: Computational Finance
+   code: COMP6212
+   grade: 100
  - name: Computational Biology
    code: COMP3212
-   grade: In Progress
- - name: Computer Graphics
-   code: COMP3214
-   grade: In Progress
+   grade: 82
  - name: Computer Vision
    code: COMP3204
    grade: 75
- - name: Machine Learning
-   code: COMP3206
-   grade: 62
- - name: Digital Systems & Signal Processing
-   code: ELEC1202
-   grade: 75
- - name: Control & Communications
-   code: ELEC2220
-   grade: 71
- - name: Programming
-   code: ELEC1201
-   grade: 91
+ - name: Advanced Computer Vision
+   code: COMP6206
+   grade: 87
  - name: Advanced Programming
    code: ELEC1204
    grade: 75
- - name: Digital Systems & Microprocessors
-   code: ELEC2221
-   grade: 88
+ - name: Intelligent Agents
+   code: COMP6203
+   grade: 78
 ---
 
-I am a third-year Electronic Engineering and Artificial Intelligence student at
-the University of Southampton. I'm mostly interested in programming, especially
+I am a PhD student in the
+[Sustainable Energy Research Group](http://www.energy.soton.ac.uk/) in the
+University of Southampton, working with
+[Professor AbuBakr S. Bahaj](http://www.energy.soton.ac.uk/people/bahaj/) and
+[**nquiring**minds](https://nquiringminds.com/).
+the University of Southampton.
+My current topic is on using Artificial Intelligence and Computer Vision on
+Renewable Energy production from Photovoltaic Solar Panels.
+
+I'm mostly interested in programming, especially
 in anything related to Artificial Intelligence, such as Machine Learning or
 Computer Vision.
 
 ## Experience
+
+### AI Engineer
+
+#### nquiringminds Ltd.
+
+##### Jun 2018 - Current
+
+Some of my responsibilities included:
+
+- Using deep-learning for the classification of signals using a
+  software-defined radio.
+- Working on a Javascript Node.js NPM database package.
+- Creating a front-end data visualization responsible web-application using
+  React.
+- Creating Bash install scripts.
+- Designing and building servers and RESTful APIs using OpenAPI/Swagger.
+
+### Embedded Engineering Intern
+
+#### nquiringminds Ltd.
+
+##### Jun 2017 - Sep 2017
+
+I was working on experimenting with high-speed data processing and storage at
+[**nquiring**minds](https://nquiringminds.com/).
+
+My work consisted of benchmarking and testing different processing solutions.
+
+It involved:
+
+- Compiling and optimizing TensorFlow on ARM processors
+- Designing and benchmarking fast and space-efficient binary-data storage
+- Testing and benchmarking fast signal-processing algorithms
+
+This involved writing code in Python, C++, and SQLite, along with testing SIMD
+vectorized instructions, compiler optimizations, compression algorithms,
+and file systems (ie F2FS vs ext4).
+
+##### Mar 2018 - Apr 2018
+
+I was doing sysadmin with Linux, writing Bash scripts and Systemd
+services for automatically creating networks and accesspoints
+over WiFi, Ethernet, 3G, and SMS.
 
 ### Engineering Intern
 
@@ -55,7 +100,7 @@ testbench for a small, affordable, customizable, and state-of-the-art satellite
 platform. My work mainly consisted of porting the on-board software to run on a
 newer dual-core computer by adapting the code to use asymmetric multiprocessing.
 I also upgraded and tested the code with the in-development version of RTEMS 4.11,
-and tested symmetric multiprocessing. 
+and tested symmetric multiprocessing.
 
 The software was written in C++11 with an object-oriented design. To increase code
 reusability, the code was heavily encapsulated and filled with abstract
@@ -67,18 +112,40 @@ interfaces and generic templates. [Doxygen] [dox_url] was used to make documenta
 
 ## Education
 
+### PhD Engineering and the Environment
+
+#### The University of Southampton
+
+##### Sep 2018 - Sep 2022
+
+I'm working in the
+[Sustainable Energy Research Group](http://www.energy.soton.ac.uk/) at the
+University of Southampton, working with
+[Professor AbuBakr S. Bahaj](http://www.energy.soton.ac.uk/people/bahaj/) and
+[**nquiring**minds](https://nquiringminds.com/).
+
+My current topic is on using Artificial Intelligence and Computer Vision on
+Renewable Energy production from Photovoltaic Solar Panels.
+
 ### MEng Electronic Engineering with Artificial Intelligence
 
 #### The University of Southampton
 
 ##### Sep 2014 - Jun 2018
 
-The University of Southampton's 
-[MEng Electronic Engineering with Artificial Intelligence] [elecEng_url] gave me
-an overview of the entire field of Electronics with a focus on Artificial Intelligence.
+###### First Class Honors
 
-For my third-year project, I am working on evaluating and assessing 
+The University of Southampton's
+[MEng Electronic Engineering with Artificial Intelligence] [elecEng_url] gave me
+an overview of the entire field of Electronics with a focus on
+Artificial Intelligence.
+
+For my third-year project, I worked on evaluating and assessing
 Iterative-Learning-Control algorithms with Professor Eric Rogers.
+
+For my fourth-year project, I was the project leader for simulating a robotic
+arm, with my focus on using Convolutional Neural Networks for Computer Vision
+with Dr. Klaus-Peter Zauner.
 
 [elecEng_url]: http://www.ecs.soton.ac.uk/programmes/meng-electronic-engineering-artificial-intelligence
 
@@ -86,8 +153,8 @@ Grades:
 
 <table border="1">
 	<tr>
-		<td> <b> Average Grade </b> </td>
-		<td> <b> 69.15 </b> </td>
+		<td> <b> Final Result </b> </td>
+		<td> <b> First Class Honors </b> </td>
 	</tr>
 	{% for course in page.grades %}
 	<tr>
@@ -108,7 +175,7 @@ Grades:
 ##### Jun 2016
 
 This JP Morgan Machine Learning Workshop taught machine learning techniques in
-Python. 
+Python.
 
 ## Projects
 
@@ -184,7 +251,8 @@ made using Swing.
 * C++ (Qt and RTEMS)
 * MATLAB
 * Java
-* Python
+* JavaScript (React and Node.js)
+* Python (Numpy and TensorFlow)
 * SystemVerilog (Hardware Description Language)
 
 ### Software
@@ -193,4 +261,4 @@ made using Swing.
 * Linux and Bash
 * Git and SVN
 * Eclipse and NetBeans
-* Doxygen and Javadoc
+* Doxygen, Javadoc, JSDocs
