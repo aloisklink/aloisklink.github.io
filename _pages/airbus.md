@@ -8,8 +8,6 @@ sitemap: true
 modified: 2017-02-19
 ---
 
-{% include base_path %}
-
 ### Engineering Intern
 
 #### Airbus Defence & Space Friedrichshafen
@@ -64,4 +62,4 @@ We thank Mr Klink for his good work and we wish him all the best in his future c
 
 *The above report was translated from the original, which can be found below.*
 
-![Original Airbus Testimonial](../images/airbusPraktikantenzeugnis.jpg)
+![Original Airbus Testimonial]({{"../images/airbusPraktikantenzeugnis.jpg" | absolute_url}})

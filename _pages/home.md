@@ -37,8 +37,6 @@ grades:
    grade: 88
 ---
 
-{% include base_path %}
-
 I am a third-year Electronic Engineering and Artificial Intelligence student at
 the University of Southampton. I'm mostly interested in programming, especially
 in anything related to Artificial Intelligence, such as Machine Learning or
@@ -63,7 +61,7 @@ The software was written in C++11 with an object-oriented design. To increase co
 reusability, the code was heavily encapsulated and filled with abstract
 interfaces and generic templates. [Doxygen] [dox_url] was used to make documentation.
 
-*See [the page on Airbus Experience](/experience/airbus) for more information.*
+*See [the page on Airbus Experience]( {{ "/experience/airbus" | absolute_url }}) for more information.*
 
 [dox_url]: http://www.stack.nl/~dimitri/doxygen/
 
@@ -196,5 +194,3 @@ made using Swing.
 * Git and SVN
 * Eclipse and NetBeans
 * Doxygen and Javadoc
-
-
