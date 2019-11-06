@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: aloisklink.com
+Token: c5aedfe59d2fce96ac2e4bf165a5a3fb4221bba5bb14de63b254aa261d25e765
