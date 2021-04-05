@@ -1,6 +1,7 @@
 ---
 layout: post
-title:  "ZFS and Shucking HDDs"
+title: "Migrating to OpenZFS and Shucking HDDs"
+author_profile: true
 ---
 
 ## Background
@@ -150,6 +151,13 @@ config:
 errors: No known data errors
 ```
 
+Finally, it's usually worth adding `lz4` compression to your pool, unless you
+have a slow CPU and most of your data is already compressed (e.g. video).
+
+```bash
+sudo zfs set compression=lz4 zfspool
+```
+
 ### Copying over the data
 
 Firstly, I converted my existing old `mdadm` RAID5 pool into read-only mode.
@@ -178,4 +186,66 @@ my SSH connection dropped), and used `rsync` to copy the data over.
 
 ```bash
 rsync --partial-dir=.rsync-partial --info=progress2 --archive /mnt/md0/ /zfspool/
+```
+
+Finally, many hours later, it was done!
+
+### Adding in the new hard drives
+
+Firstly, I exported and imported the zpool array. This converted the pool
+from using `/dev/sd*` (which might change when we unplug devices),
+to using `/dev/disk/by-id/*`, which should be consistent, even when we unplug
+and plug in HDDs.
+
+```bash
+sudo zpool export zfspool && sudo zpool import -d /dev/disk/by-id
+```
+
+Next, I removed some of the old RAID HDDs, and replaced them with my newly
+shucked HDDs to be used for OpenZFS parity, then turned the computer back on.
+
+I had to first run the following to find the original `zpool` array:
+
+```bash
+sudo zpool import -d /dev/disk/by-id zfspool
+```
+
+Next, I used `sudo fdisk -l` to identify the device name of my newly installed HDDs.
+
+And finally, I replaced the old temporary files I made the zpool with, with
+the new HDDs:
+
+```bash
+sudo zpool replace -f zfspool ~/openzfs-tmp/fake1.img /dev/sda
+sudo zpool replace -f zfspool ~/openzfs-tmp/fake2.img /dev/sdb
+```
+
+We can see with `zpool status` that resilvering is happening, as well as an
+ETA for when it should be done. Fingers crossed we don't get an UREs when
+resilvering, otherwise we'd have to reinstall our original RAID HDDs.
+
+```console
+e@me:~$ zpool status
+  pool: zfspool
+ state: DEGRADED
+status: One or more devices is currently being resilvered.  The pool will
+	continue to function, possibly in a degraded state.
+action: Wait for the resilver to complete.
+  scan: resilver in progress since Mon Apr  5 18:25:47 2021
+	2.57T scanned at 41.1G/s, 17.4G issued at 278M/s, 14.9T total
+	11.6G resilvered, 0.11% done, 0 days 15:31:31 to go
+config:
+
+	NAME                                     STATE     READ WRITE CKSUM
+	zfspool                                  DEGRADED     0     0     0
+	  raidz2-0                               DEGRADED     0     0     0
+	    sdf                                  ONLINE       0     0     0
+	    replacing-1                          DEGRADED     0     0     0
+	      /home/me/openzfs-tmp/fake1.img  OFFLINE      0     0     0
+	      sda                                ONLINE       0     0     0  (resilvering)
+	    replacing-2                          DEGRADED     0     0     0
+	      /home/me/openzfs-tmp/fake2.img  OFFLINE      0     0     0
+	      sdb                                ONLINE       0     0     0  (resilvering)
+
+errors: No known data errors
 ```
