@@ -51,8 +51,7 @@ I bought 3x 14 TB WD Elements External Hard Drives from Amazon UK.
 I followed [How to Shuck a WD Elements External Hard Drive](https://www.ifixit.com/Guide/How+to+Shuck+a+WD+Elements+External+Hard+Drive/137646)
 from iFixit and shucked the drives, to find:
 
-- 1x WD140EDFZ (WD White)
-- 2x UNKNOWN
+- 3x WDC WD140EDFZ-11A0VA0 (WD White)
 
 I didn't bother doing any sort of testing on them,
 and they're not WD Red drives (just WD White), but a
