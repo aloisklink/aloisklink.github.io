@@ -248,3 +248,106 @@ config:
 
 errors: No known data errors
 ```
+
+#### Debugging Infinite Loop Resilvering
+
+A day or two later, I notice that one of my HDDs seems to be stuck in a resilvering loop.
+It keeps on reaching 100%, then restarting at 0% again.
+
+Time to test whether or not the HDD was damaged in shipping!
+
+First, I ran `sudo zpool detach zfspool /dev/sdb` to cancel resilvering.
+
+```console
+me@me:~$ sudo zpool detach zfspool /dev/sdb
+me@me:~$ sudo zpool status
+  pool: zfspool
+ state: DEGRADED
+status: One or more devices is currently being resilvered.  The pool will
+	continue to function, possibly in a degraded state.
+action: Wait for the resilver to complete.
+  scan: resilver in progress since Tue Apr  6 17:27:57 2021
+	1.99T scanned at 5.46G/s, 159G issued at 435M/s, 14.9T total
+	44.0G resilvered, 1.05% done, 0 days 09:50:04 to go
+config:
+
+	NAME                                   STATE     READ WRITE CKSUM
+	zfspool                                DEGRADED     0     0     0
+	  raidz2-0                             DEGRADED     0     0     0
+	    sdf                                ONLINE       0     0     2
+	    sda                                ONLINE       0     0     2
+	    /home/alois/openzfs-tmp/fake2.img  OFFLINE      0     0     0
+
+errors: 1 data errors, use '-v' for a list
+```
+
+Then, I tried doing a SMART test to quickly check if it could detect any issues
+on the HDD, and found no issues with a short test:
+
+```bash
+sudo smartctl --test=short /dev/sdb
+# wait a few minutes
+sudo smartctl --log=selftest /dev/sdb
+```
+
+I read on [openzfs/zfs#9551](https://github.com/openzfs/zfs/issues/9551#issuecomment-633298283)
+that the issue might be with me trying to resilver two devices at once,
+so I redid my `zpool replace`
+and crossed my fingers.
+
+A day later, still no luck. Some more debugging later, looking at the `zpool`
+events, we see that immediately when a resilvering finished, it restarted:
+
+```bash
+sudo zpool events -v
+```
+
+However, looking at the syslog showed an error with `zed`, it looks like
+there is an error whenever resilvering finishes in the `resilver_finish-notify.sh`
+script. Could this be the cause of the loop restarting?
+
+```console
+me@me:~$ vim /var/log/syslog
+Apr  7 05:02:59 me zed: eid=56 class=history_event pool_guid=0x89A121A4820A4261
+Apr  7 05:03:00 me zed: eid=57 class=resilver_finish pool_guid=0x89A121A4820A4261
+Apr  7 05:03:00 me zed: error: resilver_finish-notify.sh: eid=57: "mail" not installed
+Apr  7 05:03:00 me zed: eid=58 class=history_event pool_guid=0x89A121A4820A4261
+Apr  7 05:03:04 me zed: eid=59 class=resilver_start pool_guid=0x89A121A4820A4261
+Apr  7 05:03:05 me zed: eid=60 class=history_event pool_guid=0x89A121A4820A4261
+```
+
+Looking at the bash scripts, I found the following function in
+[`zed-functions.sh`](https://github.com/openzfs/zfs/blob/master/cmd/zed/zed.d/zed-functions.sh):
+
+```bash
+zed_notify_email()
+{
+	# ...
+	[ -n "${ZED_EMAIL_ADDR}" ] || return 2
+	# ...
+}
+```
+
+Hang on, I've never set `ZED_EMAIL_ADDR`, why isn't it returning early?
+Look at `zed`'s config I can see the problem, `ZED_EMAIL_ADDR` was somehow
+enabled. I uncommited it and waiting for the next resilverling loop to finish.
+
+```console
+me@me:~$ sudo vim /etc/zfs/zed.d/zed.rc
+# Email will only be sent if ZED_EMAIL_ADDR is defined.
+# Disabled by default; uncomment to enable.
+#
+ZED_EMAIL_ADDR="root"
+```
+
+Still no luck (but it did fix the error message):
+
+```console
+me@me:~$ vim /var/log/syslog
+Apr  7 16:42:06 elementalfrog zed: eid=68 class=history_event pool_guid=0x89A121A4820A4261
+Apr  7 16:42:06 elementalfrog zed: eid=69 class=resilver_finish pool_guid=0x89A121A4820A4261
+Apr  7 16:42:06 elementalfrog zed: eid=70 class=history_event pool_guid=0x89A121A4820A4261
+Apr  7 16:42:11 elementalfrog zed: eid=71 class=resilver_start pool_guid=0x89A121A4820A4261
+Apr  7 16:42:11 elementalfrog zed: eid=72 class=history_event pool_guid=0x89A121A4820A4261
+```
+
