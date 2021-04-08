@@ -150,11 +150,36 @@ config:
 errors: No known data errors
 ```
 
-Finally, it's usually worth adding `lz4` compression to your pool, unless you
+#### ZFS Options
+
+Finally, there's some options that are usually worth changing from default:
+
+It's usually worth adding `lz4` compression to your pool, unless you
 have a slow CPU and most of your data is already compressed (e.g. video).
 
 ```bash
 sudo zfs set compression=lz4 zfspool
+```
+
+Setting `xattr=sa` gives much greater performance on Linux, although
+makes the ZFS array incompatible with some other OSes.
+
+```bash
+sudo zfs set xattr=sa zfspool
+```
+
+Setting `relatime=on` uses Linux's `relatime` instead of `atime`. This essentially
+massively cuts down on the number of `atime` (access time) writes made
+whenever a file is read, back to the `ext4` defaults.
+
+Unfortunately, `lazytime` is still not supported by ZFS
+(see (openzfs/zfs#9843)[https://github.com/openzfs/zfs/issues/9843]),
+so we can't use that yet.
+
+Disabling `atime` is also an option if you don't think you'll need it.
+
+```bash
+sudo zfs set relatime=on zfspool
 ```
 
 ### Copying over the data
