@@ -376,3 +376,114 @@ Apr  7 16:42:11 elementalfrog zed: eid=71 class=resilver_start pool_guid=0x89A12
 Apr  7 16:42:11 elementalfrog zed: eid=72 class=history_event pool_guid=0x89A121A4820A4261
 ```
 
+I tried deleteing the file that was causing the error in `sudo zpool status -v`,
+since I could just copy it from my old RAID array, but I still had no luck at the
+end of the resilver.
+
+Finally, I tried running `zpool detach zfspool /dev/sdb && zpool replace` again.
+Then, almost 5 days after I started building the array, resilvering was finally
+done.
+
+```
+  scan: resilvered 4.89T in 0 days 11:30:32 with 0 errors on Fri Apr  9 01:48:17 2021
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	zfspool     ONLINE       0     0     0
+	  raidz2-0  ONLINE       0     0     0
+	    sdf     ONLINE       0     0     8
+	    sda     ONLINE       0     0     8
+	    sdb     ONLINE       0     0     0
+
+errors: No known data errors
+```
+
+However, I was still missing the final file that had the checksum error and
+that I therefore deleted.
+So I turned off the server, unplugged two of the OpenZFS drives again
+(making a note that the action of unplugging them took off the tape
+blocking PIN 3 of the SATA),
+and plugged back in the `mdadm` RAID drives.
+
+Finally, I first ran the rsync command with the `--dry-run` and `--verbose`
+flags to see that the only file that would be copied would be the one I manually deleted.
+
+#### Final resilver
+
+After turning off the NAS, unplugging the old `mdadm` RAID devices, and plugging
+in the OpenZFS devices (after taping up the SATA 3.3 pin 3), there was one final
+resilver todo.
+
+```console
+me@me:~$ zpool status
+  pool: zfspool
+ state: DEGRADED
+status: One or more devices could not be used because the label is missing or
+	invalid.  Sufficient replicas exist for the pool to continue
+	functioning in a degraded state.
+action: Replace the device using 'zpool replace'.
+   see: http://zfsonlinux.org/msg/ZFS-8000-4J
+  scan: resilvered 4.89T in 0 days 11:30:32 with 0 errors on Fri Apr  9 01:48:17 2021
+config:
+
+	NAME                      STATE     READ WRITE CKSUM
+	zfspool                   DEGRADED     0     0     0
+	  raidz2-0                DEGRADED     0     0     0
+	    12345678900000000987  FAULTED      0     0     0  was /dev/sdf1
+	    sda                   ONLINE       0     0     0
+	    12345678900000000123  FAULTED      0     0     0  was /dev/sdb1
+```
+
+The 2 HDDs that I just added in showed as faulted, since they went offline.
+To fix this, I just `export`-ed and re-`import`-ed them:
+
+```bash
+sudo zpool export zfspool && sudo zpool import -d /dev/disk/by-id zfspool
+```
+
+And that was the final resilver (relatively fast)!
+
+Finally, to remove the ugly error logs, now that every is working,
+I ran:
+
+```bash
+sudo zpool clear zfspool
+```
+
+### More ZFS Setup
+
+Firstly, I split up my `zfspool` into seperate datasets.
+This was so I could use different sharing mechanisms for each dataset,
+as well as modify their block sizes for their specific use cases.
+
+First, I created the `shared` folder, which I would use to store things shared
+on the drive.
+
+Next, I created a `shared/Media` folder, which I would increase the blocksize
+for, for slightly increased performance, due to lower fragmentation.
+
+I also disabled `atime` on some of the datasets, since they didn't need it,
+so I could reduce the uncessary writes.
+
+```bash
+sudo zfs create zfspool/shared && sudo zfs create zfspool/shared/Media
+```
+
+See the OpenZFS documentation on
+[Performance and Tuning | Workload Tuning](https://openzfs.github.io/openzfs-docs/Performance%20and%20Tuning/Workload%20Tuning.html#bit-torrent)
+for more information. For example, if you are using a database, you normally
+want to decrease the blocksize to match your application.
+
+```bash
+sudo zfs set recordsize=1M zfspool/shared/Media
+```
+
+Finally, once again, I had to use `rsync` to move my data from the root ZFS
+folder to their appropriate datasets. I used the `--remove-source-files` to
+automatically delete the original files after the `rsync`, so that the %-used
+on the drive remained low.
+
+```bash
+rsync --remove-source-files --partial-dir=.rsync-partial --info=progress2 --archive /zfspool/Media /zfspool/shared
+```
+
