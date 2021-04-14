@@ -163,9 +163,11 @@ sudo zfs set compression=lz4 zfspool
 
 Setting `xattr=sa` gives much greater performance on Linux, although
 makes the ZFS array incompatible with some other OSes.
+Enabling `dnodesize=auto` is also good for as well
+(but prevents GRUB from booting this).
 
 ```bash
-sudo zfs set xattr=sa zfspool
+sudo zfs set xattr=sa dnodesize=auto zfspool
 ```
 
 Setting `relatime=on` uses Linux's `relatime` instead of `atime`. This essentially
