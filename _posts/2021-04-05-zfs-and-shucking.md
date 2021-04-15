@@ -489,3 +489,43 @@ on the drive remained low.
 rsync --remove-source-files --partial-dir=.rsync-partial --info=progress2 --archive /zfspool/Media /zfspool/shared
 ```
 
+## Sharing OpenZFS with NFS
+
+The next step was to replace my old NFS-share with the new ZFS sharing system.
+
+Previously, I used the `/etc/exports` file, but ZFS has their own sharing
+system.
+
+Firstly, I commented out the lines in `/etc/exports` with my old config, then
+ran `sudo exportfs -ra` to remove the entries.
+
+Then, I enabled NFS sharing on the `/zfs/shared` folder for anybody on my local network (`192.168.0.*`):
+
+```bash
+sudo zfs set sharenfs='no_subtree_check,crossmnt,rw=192.168.0.0/24' zfspool/shared
+```
+
+Finally, on my clients, I edited their `/etc/fstab` to the following:
+
+```console
+user@client:~$ vim /etc/fstab
+me.local:/zfspool/shared   /mnt/server   nfs4    _netdev,auto,soft,intr  0  0
+```
+
+And I ran `sudo mount --all --verbose` to mount everything in the `fstab` file
+and confirm it worked!
+
+## Final cleanup
+
+Finally, I removed the old RAID config.
+
+First, I removed the mount points in `/etc/fstab`.
+
+Next, I deleted the array from `/etc/mdadm/mdadm.conf`.
+
+And finally, I uninstalled the `mdadm` progra, since I wasn't using it for
+anything else:
+
+```bash
+sudo apt remove mdadm
+```
