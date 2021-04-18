@@ -252,7 +252,8 @@ compress_html:
   clippings: all
   ignore:
     envs: development
-    
+
+search: true
 
 # Defaults
 defaults:
@@ -266,4 +267,6 @@ defaults:
       read_time: true
       comments: # true
       share: true
+      show_date: true
       related: true
+      toc: true
