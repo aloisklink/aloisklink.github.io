@@ -1,8 +1,13 @@
 ---
-layout: post
+layout: single
 title: "Migrating to OpenZFS and Shucking HDDs"
+excerpt: "Migrating an old 3 HDD mdadm RAID-5 array to an 3 HDD OpenZFS RAIDZ-2 array,
+when my NAS case only has space for 4 HDDs."
 author_profile: true
 ---
+
+Migrating an old 3 HDD mdadm RAID-5 array to an 3 HDD OpenZFS RAIDZ-2 array,
+when my NAS case only has space for 4 HDDs.
 
 ## Background
 
@@ -529,3 +534,5 @@ anything else:
 ```bash
 sudo apt remove mdadm
 ```
+
+It's finally over, after more than a week of work 🥳.
