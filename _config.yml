@@ -83,13 +83,15 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "/images/AloisKlinkPicture.jpg" # Open Graph/Twitter default site image
+og_image : "/images/AloisKlinkPicture.jpg" # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
+  type: Person # Person or Organization (defaults to Person)
+  name: Alois Klink # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
+    - https://github.com/aloisklink
+    - https://www.linkedin.com/in/aloisklink/
 
 # Analytics
 analytics:
@@ -103,7 +105,7 @@ analytics:
 author:
   name             : "Alois Klink"
   avatar           : "/images/AloisKlinkPicture.jpg"
-  bio              : "MEng Electronic Engineering with AI student."
+  bio              : "Machine Learning PhD Student who loves back-end programming."
   location         : "University of Southampton"
   email            : "alois.klink@gmail.com"
   links:
