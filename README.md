@@ -1,4 +1,28 @@
-# [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/)
+# aloisklink.github.io
+
+Uses the [minimal-mistakes](https://mmistakes.github.io/minimal-mistakes/)
+template.
+
+## Local testing
+
+Ruby bundler is used to install dependencies, and on Ubuntu, it can be installed
+with:
+
+```bash
+sudo apt install ruby-dev ruby-bundler
+```
+
+Then, first set the install path to a local folder, so we don't need to run with `sudo`:
+
+```bash
+bundle config set path 'vendor/bundle'
+```
+
+Finally, you can install the Ruby dependencies with:
+
+```bash
+bundle install
+```
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/LICENSE)
 [![Jekyll](https://img.shields.io/badge/jekyll-%3E%3D%203.6-blue.svg)](https://jekyllrb.com/)
