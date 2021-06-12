@@ -1,19 +1,41 @@
 ---
 layout: single
-title: "Geotagging Photos using Google Location History"
+title: "Geotagging Photos using Google Location History and Exiftool"
 excerpt: ""
 author_profile: true
 ---
 
-**Remember to rename `elementalfrog` to `my-server`.**
+A few years back, I went on a hiking trip, where I used a Campark ACT74
+Action Camera, an extremely cheap 4K camera.
 
+One of the features was that it could take a 4K picture 5 times a second,
+or a 4K 60fps video in 5 minute chunks. Although the low battery life made
+the camera difficult to use (and the fact that when the battery died), I made
+almost 100 GB of photos/videos with this camera.
+
+The camera didn't have a GPS unit installed. Additionally, the camera had
+an internal clock that constantly reset itself to 2017-01-01 whenever
+the battery went out, so I also had loads of photographs incorrectly dated.
+
+However, I realised that I could geotag these photos by using my Google Location
+History and `exiftool`, so it was off to do that,
+before [Google Photos ended their unlimited storage on June 1st 2021](https://www.theverge.com/2020/11/11/21560810/google-photos-unlimited-cap-free-uploads-15gb-ending).
+
+## Mounting NAS folder locally
 
 Firstly, since my photos were on my NAS, and I wanted to view the photos and
 videos locally, I used SSHFS to mount all the photos locally.
 
+SSHFS is slower than other methods of mounting a folder, but it's definitely
+the easiest, so it's what I used.
+
+I disabled compression and used the fastest cipher still supported by my
+OpenSSH server/client, since as my NAS was on my local LAN, I was not worried
+about security or network speed, I was more worried about my slow NAS CPU!
+
 ```bash
 mkdir --parents /tmp/geotag-photos
-sshfs elementalfrog:/zfspool/geotag-photos /tmp/geotag-photos -o Compression=no -o Ciphers=aes128-ctr
+sshfs server:/zfspool/geotag-photos /tmp/geotag-photos -o Compression=no -o Ciphers=aes128-ctr
 ```
 
 ## Getting Geographical Information from Google
@@ -194,11 +216,26 @@ exiftool -coordFormat '%.8f' '-keys:GPSCoordinates<$GPSLatitude, $GPSLongitude' 
 
 ## Uploading Images to Google Photos
 
-Since I wanted to upload the images from my server, I needed to create
-a VNC connection to that server.
+Finally, in order to upload the photos/videos,
+I just opened up <https://photos.google.com> in my local computer's web-browser,
+and dragged the `sshfs`-mounted NAS folder to the web-page.
 
-To do this, I first installed VNC:
+Although my intranet uses very slow Ethernet-over-Powerline (<100 Mbps),
+which makes `sshfs` very inefficient, my internet upload speed is very limited,
+and is less than 20Mbps, which remains the bottle-neck.
 
-```bash
-sudo apt install tightvncserver
-```
+## Manually correcting video times on Google Photos
+
+Unfortunately, once everything was uploaded, my videos still had the incorrect
+time. Their UTC time was shown as the local time, which in Britian during the summer,
+is +01:00 hour behind.
+
+I didn't bother to use `exiftool` to fix this, as I was too close to the deadline
+to reupload many gigabytes of videos. So instead, I just manually selected all
+the videos in the Google Photos browser, pressed **Edit date & time**,
+then **Shift dates & times**, and manually gave all the videos a 01:00 hour offset.
+
+It's not the best way of doing this, I'd have to find the correct flag to label
+videos for Google Photos using `exiftool` in the future, but with the lack
+of unlimited storage for Google Photos nowadays, it's unlikely I will upload
+many more vidoe files.
