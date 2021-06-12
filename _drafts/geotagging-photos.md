@@ -1,7 +1,6 @@
 ---
 layout: single
 title: "Geotagging Photos using Google Location History and Exiftool"
-excerpt: ""
 author_profile: true
 ---
 
