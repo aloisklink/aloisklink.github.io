@@ -115,11 +115,6 @@ mkdir --parents 'accurate-time/geotagged' # output directory
 exiftool -geotag 'geoinfo/google-fit/2018-06-1*.tcx' -geotag 'geoinfo/location-history.kml' '-geotime<${DateTimeOriginal}+01:00' -o 'accurate-time/geotagged/' 'accurate-time/ungeotagged'
 ```
 
-```bash
-exiftool -coordFormat '%.8f' '-keys:GPSCoordinates<$GPSLatitude, $GPSLongitude' -overwrite_original accurate-time/geotagged/2018061{0,1}_*.mp4
-exiftool -geotag 'geoinfo/google-fit/2018-06-1*.tcx' -geotag 'geoinfo/location-history.kml' '-geotime<${DateTimeOriginal}+01:00' -o 'accurate-time/geotagged/' accurate-time/ungeotagged/2018061{0,1}_*.mp4
-```
-
 For Google Photos to understand the geotagged location of the videos, we
 [additionally need to add the `Keys:GPSCoordinates` tag](https://exiftool.org/forum/index.php?topic=11040.0).
 
