@@ -118,6 +118,9 @@ exiftool -geotag 'geoinfo/google-fit/2018-06-1*.tcx' -geotag 'geoinfo/location-h
 For Google Photos to understand the geotagged location of the videos, we
 [additionally need to add the `Keys:GPSCoordinates` tag](https://exiftool.org/forum/index.php?topic=11040.0).
 
+As Google Photos doesn't seem to like floating-point numbers with more than 8
+decimal points, we can limit this by using `-coordFormat '%.8f'`.
+
 We can do this via:
 
 ```bash
